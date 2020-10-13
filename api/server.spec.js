@@ -18,12 +18,12 @@ describe("server.js", () => {
 
   describe("GET /", () => {
     it("should return 200 OK status code", async () => {
-      const res = await request(server).get("/list");
+      const res = await request(server).get("/api/cars/list");
       expect(res.status).toBe(200);
     });
 
     it("should return JSON", async () => {
-      const res = await request(server).get("/");
+      const res = await request(server).get("/api/cars/list");
       expect(res.type).toBe("application/json");
     });
   });
@@ -31,7 +31,7 @@ describe("server.js", () => {
   describe("PUT /", () => {
     it("should return 200 OK status code", async () => {
       const res = await request(server)
-        .put("/1")
+        .put("/api/cars/1")
         .send({ make: "Nissan", model: "Titan", year: 2016 });
       expect(res.status).toBe(200);
       expect(res.type).toBe("application/json");
@@ -40,7 +40,7 @@ describe("server.js", () => {
 
   describe("DELETE /", () => {
     it("should return 200 OK status code", async () => {
-      const res = await request(server).delete("/1");
+      const res = await request(server).delete("/api/cars/1");
       expect(res.status).toBe(200);
       expect(res.type).toBe("application/json");
     });
